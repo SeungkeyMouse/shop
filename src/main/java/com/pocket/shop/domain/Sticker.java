@@ -1,5 +1,6 @@
 package com.pocket.shop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ public class Sticker {
 
     @ManyToOne(fetch = FetchType.LAZY)//주문:멤버 = 다대일관계
     @JoinColumn(name = "store_id")//추가로 매핑을 이렇게 하면 외래키 알려줌
+    @JsonIgnore
     private Store store;
 
     @Column(name = "sticker_name")
