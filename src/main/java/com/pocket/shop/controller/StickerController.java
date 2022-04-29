@@ -23,7 +23,7 @@ public class StickerController {
     @PostMapping("/sticker")//3. Sticker(store객체, name, num) 보내주면 저장
     ResponseEntity<Sticker> createSticker(@RequestBody Sticker sticker) throws URISyntaxException {
         Sticker result = stickerRepository.save(sticker);
-        return ResponseEntity.created(new URI("/api/store/" + result.getId()))
+        return ResponseEntity.created(new URI("/api/sticker/" + result.getId()))
                 .body(result);
     }
 }

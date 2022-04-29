@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,10 +27,11 @@ public class StoreController {
         return storeRepository.findAll();
     }
 
-    @GetMapping("/stores/{id}")
-    ResponseEntity<?> getStore(@PathVariable Long id) {//2. (id 보내면) -> 특정 가게(스티커 포함) 중첩JSON
+    @GetMapping("/stores/{id}")//요청 에시 ==> http://localhost:8080/api/stores/1
+    ResponseEntity<?> getStore(@PathVariable Long id) {//2. (스토어id 보내면) -> 스티커 포함 중첩JSON
         Optional<Store> store = storeRepository.findById(id);
-        return store.map(response -> ResponseEntity.ok().body(response))
+
+        return store.map(response -> ResponseEntity.ok().body(response.getStickers()))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }

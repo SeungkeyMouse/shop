@@ -28,6 +28,6 @@ public class Store{
 
 
     //스토어:스티커=일대다
-    @OneToMany(mappedBy = "store") // mappedBy는 Order테이블에있는 member에 의해 매핑됨(연관관계 주인은 order)
+    @OneToMany(mappedBy = "store") //mappedBy는 Order테이블에있는 member에 의해 매핑됨(연관관계 주인은 order)
     private List<Sticker> stickers= new ArrayList<>();
 }
