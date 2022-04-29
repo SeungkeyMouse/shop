@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
+@CrossOrigin(origins = {"http://localhost:3000"})
 public class StoreController {
     private final StoreRepository storeRepository;
     private final StickerRepository stickerRepository;
