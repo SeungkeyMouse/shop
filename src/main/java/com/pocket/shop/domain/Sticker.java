@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 //@Table(name = "orders")
@@ -26,7 +27,7 @@ public class Sticker {
     private String name;
 
     @Column(name = "sticker_num")
-    private int num;
+    private Integer num;
 
 
     //==연관관계 메서드==//
@@ -39,24 +40,10 @@ public class Sticker {
     public static Sticker createSticker(Store store, String name, int num) {
         Sticker sticker = new Sticker();
         sticker.setStore(store);
+        sticker.setName(name);
         sticker.setNum(num);
 
         return sticker;
     }
 
-
-    //== 조회 로직 ==//
-    /**
-     * 전체 주문 가격 조회
-     */
-    /*public int getTotalPrice(){
-       *//* int totalPrice = 0;
-
-        for(OrderItem orderItem : orderItems){
-            totalPrice +=orderItem.getTotalPrice();
-        }
-        return totalPrice;*//*
-        return orderItems.stream().mapToInt(OrderItem::getTotalPrice).sum();
-    }
-*/
 }
