@@ -1,19 +1,16 @@
 package com.pocket.shop.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.sun.istack.NotNull;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Optional;
 
 @Entity
-//@Table(name = "orders")
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED )
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Sticker {
     @Id
     @GeneratedValue
@@ -31,7 +28,6 @@ public class Sticker {
     @Column(name = "sticker_num")
     private Integer num;
 
-
     //==연관관계 메서드==//
     public void setStore(Store store) {
         this.store = store;
@@ -47,5 +43,4 @@ public class Sticker {
 
         return sticker;
     }
-
 }
